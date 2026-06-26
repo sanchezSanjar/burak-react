@@ -5,8 +5,9 @@ import { store } from "./app/store";
 import App from "./app/App";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
-import theme from "./theme";
+import theme from "./app/MaterialTheme";
 import "./css/index.css";
+
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
