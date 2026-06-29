@@ -234,19 +234,33 @@ ichida necha marotaba takrorlanganligini qaytarsin
 (nested object bolsa ham sanasin). MASALAN: 
 countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model') return 2. */
 
-function countOccurrences(obj: {[key: string]: any}, target: string): number {
-    let count = 0;
+// function countOccurrences(obj: {[key: string]: any}, target: string): number {
+//     let count = 0;
 
-    for (let key in obj) {
-        if (key === target) {
-            count++;
-        }
-        if (typeof obj[key] === 'object' && obj[key] !== null) {
-            count += countOccurrences(obj[key], target);
-        }
-    }
+//     for (let key in obj) {
+//         if (key === target) {
+//             count++;
+//         }
+//         if (typeof obj[key] === 'object' && obj[key] !== null) {
+//             count += countOccurrences(obj[key], target);
+//         }
+//     }
 
-    return count;
+//     return count;
+// }
+
+// console.log(countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model'));
+
+// // MIT TASK - Y
+
+/* Shunday function yozing, uni 2 ta array parapetri bolsin. 
+Function ikkala arrayda ham ishtirok etgan qiymatlarni bir arrayda qaytarsin. 
+MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3]. */
+
+function findIntersection<T>(arr1: T[], arr2: T[]): T[] {
+  const set = new Set(arr2);
+  return arr1.filter(item => set.has(item));
 }
 
-console.log(countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model'));
+// Test
+console.log(findIntersection([1, 2, 3], [3, 2, 0])); // [2, 3]
