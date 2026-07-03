@@ -6,7 +6,7 @@ import NewDishes from "./NewDishes";
 import PopularDishes from "./PopularDishes";
 import Statistics from "./Satistics";
 
-import "../../../css/home.css"
+import "../../../css/home.css";
 
 export default function HomePage() {
   return (
