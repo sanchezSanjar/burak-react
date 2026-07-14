@@ -1,6 +1,4 @@
 // import React from "react";
-// import { Box, Button, Container, Stack, Typography } from "@mui/material";
-
 import {Box , Button, Container, Stack, Typography} from "@mui/material"
 import {Link, Route, Switch, useLocation} from "react-router-dom";
 import HomePage from "./screens/homePage";
@@ -14,6 +12,7 @@ import Footer  from "./components/footer";
 import "../css/app.css";
 import "../css/navbar.css";
 import "../css/footer.css";
+import Test from "./screens/test";
 
 function App() {
  const location = useLocation();
@@ -36,7 +35,8 @@ function App() {
             <HelpPage/>
           </Route>
           <Route path="/">
-            <HomePage />
+          <Test />
+            {/* <HomePage /> */}
           </Route>
         </Switch>
         <Footer/>
