@@ -1,0 +1,16 @@
+export enum MemberType {
+    USER = "USER",
+    RESTAURANT= "RESTAURANT", 
+}
+
+export enum MemberStatus {
+    ACTIVE = "ACTIVE",
+    BLOCK = "BLOCK",
+    DELETE= "DELETE", 
+}
+
+export enum MemberNick {
+    USER = "ACTIVE",
+    BLOCK = "BLOCK",
+    DELETE= "DELETE", 
+}

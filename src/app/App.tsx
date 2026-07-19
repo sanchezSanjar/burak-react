@@ -12,7 +12,7 @@ import Footer  from "./components/footer";
 import "../css/app.css";
 import "../css/navbar.css";
 import "../css/footer.css";
-import Test from "./screens/test";
+// import Test from "./screens/test";
 
 function App() {
  const location = useLocation();
