@@ -9,19 +9,22 @@ import "../../../css/home.css";
 
 import { useDispatch } from "react-redux";
 import type {Dispatch} from "@reduxjs/toolkit";
-import { setNewDishes, setPopularDishes } from "./slice";
+import { setNewDishes, setPopularDishes, setTopUsers } from "./slice";
 import type { Product } from "../../../lib/types/product";
 import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../../lib/enums/product.enum";
+import MemberService from "../../services/MemberService";
+import type { Member } from "../../../lib/types/member";
 
 /** REDUX SLICE & SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({
+  setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data)),
   setNewDishes: (data: Product[]) => dispatch(setPopularDishes(data)),
+  setTopUsers: (data: Member[]) => dispatch(setTopUsers(data)),
 });
 
 export default function HomePage() {
-  const {setNewDishes} = actionDispatch(useDispatch());
-
+const { setPopularDishes, setNewDishes, setTopUsers } = actionDispatch(useDispatch());
   useEffect(() => {
     // Backend server data fetch => Data
     const product = new ProductService();
@@ -31,10 +34,7 @@ export default function HomePage() {
       order: "productViews",
       productCollection: ProductCollection.DISH
     })
-    .then((data)=> {
-      console.log("data passed here:", data);
-      setPopularDishes(data);
-    }) 
+    .then((data) => setPopularDishes(data)) // Slice: Data => Store
       .catch((err)=> console.log(err))
 
        product
@@ -44,12 +44,13 @@ export default function HomePage() {
         order: "createdAt",
         productCollection: ProductCollection.DISH,
       })
-      .then((data) => {
-        // Slice: Data => Store
-        setNewDishes(data);
-      })
-      .catch((err) => console.log(err));
+    .then((data) => setNewDishes(data)) // Slice: Data => Store
+    .catch((err) => console.log(err));
 
+    const member = new MemberService();
+    member
+      .getTopUsers()
+      .then((data) => setTopUsers(data)) // Slice: Data => Store
 
   }, []);
 
