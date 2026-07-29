@@ -77,7 +77,7 @@ export default function PopularDishes() {
                           px: "var(--Card-padding",
                           borderTop: "1px solid",
                           height: "60px",
-                        }}
+                        }} 
                       >
                         <Typography
                           startDecorator={<DescriptionOutlinedIcon />}
