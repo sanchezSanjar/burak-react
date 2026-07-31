@@ -49,7 +49,8 @@ const handleLogoutClick = (e: React.MouseEvent<HTMLElement>) => {
       sweetErrorHandling(Messages.error1, 700);
     }
   };
-
+// in App.tsx, right above `return (`
+console.log("current path:", JSON.stringify(location.pathname));
 return( 
   <>      
     {location.pathname === "/" ? ( 

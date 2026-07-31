@@ -88,7 +88,9 @@ export default function HomeNavbar(props: HomeNavbarProps) {
               <Box>
                 <Button variant="contained" 
                 className="login-button" 
-                onClick={() => setLoginOpen(true)}
+                onClick={() => {
+                  console.log("LOGIN button clicked");
+                  setLoginOpen(true)}}
                 >
                   Login
                 </Button>

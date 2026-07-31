@@ -86,7 +86,7 @@ const { authMember } = useGlobals();
               <Box>
                 <Button variant="contained" 
                 className="login-button"  
-                onClick={() => setSignupOpen(true)}>
+                onClick={() => setLoginOpen(true)}>
                   Login
                 </Button>
               </Box>
