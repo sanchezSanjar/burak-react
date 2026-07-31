@@ -26,7 +26,9 @@ export default function ActiveUsers() {
             <CssVarsProvider>
                {topUsers.length !== 0 ? (
                 topUsers.map((member: Member) => {
-                  const imagePath = `${serverApi}/${member.memberImage}`;
+                  const imagePath = member.memberImage 
+                      ? `${serverApi}/${member.memberImage}` 
+                      : "/icons/default-user.svg";
                   return (
                       <Card
                       key={member._id}
@@ -35,7 +37,10 @@ export default function ActiveUsers() {
                     >
                       <CardOverflow>
                         <AspectRatio ratio="1">
-                          <img src={imagePath} alt="" />
+                          <img 
+                            src={member.memberImage ? imagePath : "/icons/default-user.svg"} 
+                              alt="" 
+                            />
                         </AspectRatio>
                       </CardOverflow>
                      <CardOverflow>

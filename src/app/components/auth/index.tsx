@@ -11,6 +11,7 @@ import { Messages } from "../../../lib/config";
 import type { LoginInput, MemberInput } from "../../../lib/types/member";
 import MemberService from "../../services/MemberService";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { useGlobals } from "../hooks/useGlobals";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -49,6 +50,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const [memberNick, setMemberNick] = useState<string>("");
   const [memberPhone, setMemberPhone] = useState<string>("");
   const [memberPassword, setMemberPassword] = useState<string>("");
+  const { setAuthMember } = useGlobals();
   
   /** HANDLERS **/
 
@@ -85,12 +87,12 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
       const member = new MemberService();
       const result = await member.signup(signupInput);
 
-      // Saving Authenticated user
+      setAuthMember(result); // Saving Authenticated user (useGlobals)
       handleSignupClose();
     } catch (err) {
       console.log(err);
       handleSignupClose();
-      sweetErrorHandling(err).then();
+      sweetErrorHandling(err,700).then();
     }
   };
 
@@ -107,12 +109,12 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
       const member = new MemberService();
       const result = await member.login(loginInput);
 
-      // Saving Authenticated user
+      setAuthMember(result); // Saving Authenticated user (useGlobals)
       handleLoginClose();
     } catch (err) {
       console.log(err);
       handleLoginClose();
-      sweetErrorHandling(err).then();
+      sweetErrorHandling(err, 700).then();
     }
   };
 
@@ -165,7 +167,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 sx={{ marginTop: "30px", width: "120px" }}
                 variant="extended"
                 color="primary"
-                onClick={handleSignupRequest}
+                onClick={handleLoginRequest}
               >
                 <LoginIcon sx={{ mr: 1 }} />
                 Signup

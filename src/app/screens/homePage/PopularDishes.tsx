@@ -8,7 +8,7 @@ import Typography from "@mui/joy/Typography";
 import CardOverflow from "@mui/joy/CardOverflow";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
-
+import { serverApi } from "../../../lib/config";
 import { useSelector} from "react-redux";
 import {createSelector} from "reselect";
 import {retrievePopularDishes } from "./selector";
@@ -33,7 +33,7 @@ export default function PopularDishes() {
           <Stack className="cards-frame">
             {popularDishes.length !== 0 ? (
               popularDishes.map((product: Product) => {
-                const imagePath = `$(serverApi)/${product.productImages[0]}`
+                const imagePath = `${serverApi}/${product.productImages[0]}`
                 return (
                   <CssVarsProvider key={product._id}>
                     <Card className={"card"}>
@@ -74,7 +74,7 @@ export default function PopularDishes() {
                           display: "flex",
                           gap: 1.5,
                           py: 1.5,
-                          px: "var(--Card-padding",
+                          px: "var(--Card-padding)",
                           borderTop: "1px solid",
                           height: "60px",
                         }} 
