@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Link, Route, Switch, useLocation} from "react-router-dom";
+import { Route, Switch, useLocation} from "react-router-dom";
 import HomePage from "./screens/homePage";
 import ProductsPage from "./screens/productsPage";
 import OrdersPage from "./screens/ordersPage";
@@ -9,12 +9,11 @@ import HomeNavbar from "./components/headers/HomeNavbar";
 import OtherNavbar from "./components/headers/OtherNavbar";
 import Footer  from "./components/footer";
 import useBasket from "./components/hooks/useBasket";
+import AuthenticationModal from "./components/auth";
 
 import "../css/app.css";
 import "../css/navbar.css";
 import "../css/footer.css";
-import AuthenticationModal from "./components/auth";
-
 
 function App() {
 const location = useLocation();
@@ -37,14 +36,18 @@ return(
       onAdd={onAdd} 
       onRemove={onRemove} 
       onDelete={onDelete}
-      onDeleteAll={onDeleteAll}/>
+      onDeleteAll={onDeleteAll}
+      setSignupOpen={setSignupOpen}
+      setLoginOpen={setLoginOpen}/>
   ) : (
   <OtherNavbar 
   cartItems={cartItems} 
   onAdd={onAdd} 
   onRemove={onRemove} 
   onDelete={onDelete}
-  onDeleteAll={onDeleteAll}/> 
+  onDeleteAll={onDeleteAll}
+  setSignupOpen={setSignupOpen}
+  setLoginOpen={setLoginOpen}/> 
   )}
         <Switch>
           <Route path="/products">

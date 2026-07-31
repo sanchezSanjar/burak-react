@@ -1,6 +1,6 @@
 import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import Basket from "./Baskets";
+import Basket from "./Basket";
 import type { CartItem } from "../../../lib/types/search";
 
 interface OtherNavbarProps {
@@ -9,10 +9,21 @@ interface OtherNavbarProps {
   onRemove: (item: CartItem) => void;
   onDelete: (item: CartItem) => void;
   onDeleteAll: () => void;
+  setSignupOpen: (isOpen:boolean) => void;
+  setLoginOpen: (isOpen:boolean) => void;
 }
 
 export default function OtherNavbar(props:OtherNavbarProps) {
-const {cartItems, onAdd, onRemove, onDelete, onDeleteAll} = props;
+const {
+  cartItems, 
+  onAdd, 
+  onRemove, 
+  onDelete, 
+  onDeleteAll,
+  setSignupOpen, 
+  setLoginOpen,
+} = props;   
+  
 const authMember = null;
   return (
     <div className="other-navbar">
@@ -61,7 +72,9 @@ const authMember = null;
 
             {!authMember ? (
               <Box>
-                <Button variant="contained" className="login-button">
+                <Button variant="contained" 
+                className="login-button"  
+                onClick={() => setSignupOpen(true)}>
                   Login
                 </Button>
               </Box>
