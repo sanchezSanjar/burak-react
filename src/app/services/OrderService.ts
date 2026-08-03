@@ -38,8 +38,10 @@ class OrderService {
        const query = `?page=${input.page}&limit=${input.limit}&orderStartus=${input.orderStatus}`;
 
        const result = await axios.get(url + query, {withCredentials: true});
-       console.log("getMyOrders:", result);
+    //    console.log("getMyOrders:", result);
 
+        console.log("STATUS:", input.orderStatus);
+        console.log("RESULT.DATA:", result.data);
        return result.data;
     } catch(err) {
         console.log("Error, getMyOrders:", err);

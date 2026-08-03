@@ -19,11 +19,11 @@ const pausedOrdersRetriever = createSelector(
 
 export default function PausedOrders() {
   const { pausedOrders } = useSelector(pausedOrdersRetriever);
-  console.log("pausedOrders:", pausedOrders);
+
   return (
     <TabPanel value={"1"}>
       <Stack>
-        {pausedOrders.map((order: Order) => {
+        {pausedOrders?.map((order: Order) => {
           return (
             <Box key={order._id} className={"order-main-box"}>
               <Box className={"order-box-scroll"}>
