@@ -234,6 +234,7 @@ export default function Products(props: ProductsProps) {
               </div>
             </Stack>
             <Stack className="product-wrapper">
+              {" "}
               {products.length !== 0 ? (
                  products.map((product: Product) => {
                   const imagePath = `${serverApi}/${product.productImages[0]}`;
