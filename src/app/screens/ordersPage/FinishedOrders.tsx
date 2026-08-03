@@ -6,8 +6,8 @@ import { createSelector } from "reselect";
 import { retrieveFinishedOrders } from "./selector";
 
 import { serverApi } from "../../../lib/config";
-import { Order, OrderItem } from "../../../lib/types/order";
-import { Product } from "../../../lib/types/product";
+import type { Order, OrderItem } from "../../../lib/types/order";
+import type { Product } from "../../../lib/types/product";
 
 /** REDUX SLICE & SELECTOR **/
 

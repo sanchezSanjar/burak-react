@@ -1,19 +1,20 @@
 import { createSelector } from "reselect";
 import type { AppRootState } from "../../../lib/types/screen";
+import HomePage from ".";
 
 const selectOrdersPage = (state: AppRootState) => state.ordersPage;
 
 export const retrievePausedOrders = createSelector(
-    selectOrdersPage,
-(OrdersPage) => OrdersPage.pausedOrders
+  selectOrdersPage,
+  (OrdersPage) => OrdersPage.pausedOrders,
 );
 
-export const retrieveNewDishes = createSelector(
-    selectOrdersPage,
-(OrdersPage) => OrdersPage.processOrders
+export const retrieveProcessOrders = createSelector(
+  selectOrdersPage,
+  (OrdersPage) => OrdersPage.processOrders,
 );
 
-export const retrieveTopUsers = createSelector(
-    selectOrdersPage,
-(OrdersPage) => OrdersPage.finishedOrders
+export const retrieveFinishedOrders = createSelector(
+  selectOrdersPage,
+  (OrdersPage) => OrdersPage.finishedOrders,
 );
