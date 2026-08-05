@@ -19,8 +19,7 @@ export function Settings() {
   const [memberUpdateInput, setMemberUpdateInput] = useState<MemberUpdateInput>(
     {  
     memberNick: authMember?.memberNick,
-    memberPhone: authMember?.memberPhone ?? "",
-    memberPassword: "",
+    memberPhone: authMember?.memberPhone,
     memberAddress: authMember?.memberAddress,
     memberDesc: authMember?.memberDesc,
     memberImage: authMember?.memberImage,
